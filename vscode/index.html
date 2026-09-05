@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rehan prints </title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+    }
+
+    /* ================= LOGIN ================= */
+
+    #loginPage {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #111827, #4f46e5);
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      padding: 35px;
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .brand {
+      text-align: center;
+      color: #6366f1;
+      margin-bottom: 28px;
+      font-weight: bold;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .input:focus {
+      border-color: #6366f1;
+    }
+
+    .primary-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      background: #4f46e5;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .primary-btn:hover {
+      background: #4338ca;
+    }
+
+    .demo-text {
+      text-align: center;
+      color: #777;
+      margin-top: 15px;
+      font-size: 13px;
+    }
+
+    /* ================= APP ================= */
+
+    #app {
+      display: none;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 16px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .header-logo span {
+      color: #818cf8;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      background: transparent;
+      color: white;
+      padding: 9px 13px;
+      border-radius: 8px;
+    }
+
+    nav button:hover {
+      background: #374151;
+    }
+
+    .logout {
+      background: #ef4444 !important;
+    }
+
+    main {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 35px 0;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    /* ================= HOME ================= */
+
+    .hero {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
+      padding: 55px;
+      border-radius: 25px;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      line-height: 1.7;
+      color: #e0e7ff;
+    }
+
+    .hero-btn {
+      margin-top: 25px;
+      padding: 13px 22px;
+      border-radius: 10px;
+      background: white;
+      color: #4f46e5;
+      font-weight: bold;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #667085;
+      line-height: 1.5;
+    }
+
+    /* ================= PRODUCTS ================= */
+
+    .section-title {
+      font-size: 30px;
+      margin-bottom: 25px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .shirt-preview {
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f1f5f9;
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+
+    .shirt {
+      width: 145px;
+      height: 175px;
+      background: #111827;
+      position: relative;
+      clip-path: polygon(
+        25% 0,
+        42% 12%,
+        58% 12%,
+        75% 0,
+        100% 22%,
+        82% 45%,
+        72% 34%,
+        72% 100%,
+        28% 100%,
+        28% 34%,
+        18% 45%,
+        0 22%
+      );
+    }
+
+    .shirt.white {
+      background: white;
+      border: 1px solid #ddd;
+    }
+
+    .shirt.blue {
+      background: #2563eb;
+    }
+
+    .shirt.red {
+      background: #dc2626;
+    }
+
+    .product h3 {
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .add-btn {
+      width: 100%;
+      background: #4f46e5;
+      color: white;
+      padding: 12px;
+      border-radius: 9px;
+      font-weight: bold;
+    }
+
+    /* ================= DESIGNER ================= */
+
+    .designer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .design-panel,
+    .design-preview {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .design-preview {
+      min-height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #e2e8f0;
+    }
+
+    .big-shirt {
+      width: 260px;
+      height: 320px;
+      background: #111827;
+      clip-path: polygon(
+        25% 0,
+        42% 12%,
+        58% 12%,
+        75% 0,
+        100% 22%,
+        82% 45%,
+        72% 34%,
+        72% 100%,
+        28% 100%,
+        28% 34%,
+        18% 45%,
+        0 22%
+      );
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .shirt-text {
+      color: white;
+      font-size: 25px;
+      font-weight: bold;
+      text-align: center;
+      max-width: 170px;
+      word-break: break-word;
+    }
+
+    .control {
+      margin-bottom: 18px;
+    }
+
+    .control label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .color-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .color-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 1px #ccc;
+    }
+
+    .black {
+      background: #111827;
+    }
+
+    .red-bg {
+      background: #dc2626;
+    }
+
+    .blue-bg {
+      background: #2563eb;
+    }
+
+    .white-bg {
+      background: white;
+    }
+
+    .green-bg {
+      background: #16a34a;
+    }
+
+    /* ================= DASHBOARD ================= */
+
+    .earning-box {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: white;
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 25px;
+    }
+
+    .earning-box p {
+      color: #d1fae5;
+      margin-bottom: 10px;
+    }
+
+    .earning-box h1 {
+      font-size: 42px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    /* ================= CART ================= */
+
+    .cart-item {
+      background: white;
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+    }
+
+    .remove-btn {
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    .total {
+      background: white;
+      padding: 22px;
+      border-radius: 15px;
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .pay-btn {
+      background: #059669;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 9px;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    /* ================= PAYMENT MODAL ================= */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 430px;
+      background: white;
+      padding: 28px;
+      border-radius: 20px;
+    }
+
+    .modal-box h2 {
+      margin-bottom: 20px;
+    }
+
+    .payment-methods {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .method {
+      padding: 12px 5px;
+      background: #f1f5f9;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .method.active {
+      background: #e0e7ff;
+      color: #4f46e5;
+      font-weight: bold;
+    }
+
+    .close-btn {
+      width: 100%;
+      background: #e5e7eb;
+      padding: 12px;
+      border-radius: 9px;
+      margin-top: 10px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #667085;
+    }
+
+    footer strong {
+      color: #4f46e5;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 800px) {
+      .cards,
+      .products,
+      .stats,
+      .designer {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 30px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= LOGIN PAGE ================= -->
+
+  <div id="loginPage">
+
+    <div class="login-box">
+
+      <div class="logo">👕 Rehan T-Shirt</div>
+      <div class="brand">by Rehan</div>
+
+      <h2>Login / Signup</h2>
+
+      <input
+        type="text"
+        id="username"
+        class="input"
+        placeholder="Enter your name"
+      />
+
+      <input
+        type="email"
+        id="email"
+        class="input"
+        placeholder="Enter email"
+      />
+
+      <input
+        type="password"
+        id="password"
+        class="input"
+        placeholder="Enter password"
+      />
+
+      <button class="primary-btn" onclick="login()">
+        Login / Create Account
+      </button>
+
+      <p class="demo-text">
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= MAIN APP ================= -->
+
+  <div id="app">
+
+    <header>
+
+      <div class="header-logo">
+        👕 Rehan raza <span>prints</span>
+      </div>
+
+      <nav>
+        <button onclick="showSection('home')">Home</button>
+        <button onclick="showSection('shop')">Shop</button>
+        <button onclick="showSection('designer')">Design T-Shirt</button>
+        <button onclick="showSection('dashboard')">💰 Earning</button>
+        <button onclick="showSection('cart')">🛒 Cart (<span id="cartCount">0</span>)</button>
+        <button class="logout" onclick="logout()">Logout</button>
+      </nav>
+
+    </header>
+
+
+    <main>
+
+      <!-- ================= HOME ================= -->
+
+      <section id="home" class="section active">
+
+        <div class="hero">
+
+          <h1>Design Your Own T-Shirt 👕</h1>
+
+          <p>
+            Welcome to Rehan T-Shirt Studio.
+            Yahan aap ready-made T-shirts buy kar sakte ho,
+            apni T-shirt design kar sakte ho aur apni earning
+            dashboard me check kar sakte ho.
+          </p>
+
+          <button class="hero-btn" onclick="showSection('designer')">
+            Start Designing
+          </button>
+
+        </div>
+
+        <div class="cards">
+
+          <div class="card">
+            <h3>🎨 Custom Design</h3>
+            <p>
+              Apni T-shirt ka color aur text choose karke
+              unique design banao.
+            </p>
+          </div>
+
+          <div class="card">
+    
+            <p>
+              Card, UPI ya Cash payment ka demo option
+              available hai.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>💰 So Earning</h3>
+            <p>
+              Sales aur estimated earning ko dashboard
+              me track karo.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SHOP ================= -->
+
+      <section id="shop" class="section">
+
+        <h2 class="section-title">T-Shirt Shop</h2>
+
+        <div class="products">
+
+          <div class="product">
+
+            <div class="shirt-preview">
+              <div class="shirt"></div>
+            </div>
+
+            <h3>Classic Black T-Shirt</h3>
+
+            <div class="price">₹499</div>
+
+            <button
+              class="add-btn"
+              onclick="addToCart('Classic Black T-Shirt', 499)"
+            >
+              Add to Cart
+            </button>
+
+          </div>
+
+
+          <div class="product">
+
+            <div class="shirt-preview">
+              <div class="shirt white"></div>
+            </div>
+
+            <h3>Premium White T-Shirt</h3>
+
+            <div class="price">₹599</div>
+
+            <button
+              class="add-btn"
+              onclick="addToCart('Premium White T-Shirt', 599)"
+            >
+              Add to Cart
+            </button>
+
+          </div>
+
+
+          <div class="product">
+
+            <div class="shirt-preview">
+              <div class="shirt blue"></div>
+            </div>
+
+            <h3>Blue Street T-Shirt</h3>
+
+            <div class="price">₹549</div>
+
+            <button
+              class="add-btn"
+              onclick="addToCart('Blue Street T-Shirt', 549)"
+            >
+              Add to Cart
+            </button>
+
+          </div>
+
+
+          <div class="product">
+
+            <div class="shirt-preview">
+              <div class="shirt red"></div>
+            </div>
+
+            <h3>Red Edition T-Shirt</h3>
+
+            <div class="price">₹649</div>
+
+            <button
+              class="add-btn"
+              onclick="addToCart('Red Edition T-Shirt', 649)"
+            >
+              Add to Cart
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= DESIGNER ================= -->
+
+      <section id="designer" class="section">
+
+        <h2 class="section-title">🎨 T-Shirt Designer</h2>
+
+        <div class="designer">
+
+          <div class="design-panel">
+
+            <div class="control">
+
+              <label>T-Shirt Color</label>
+
+              <div class="color-buttons">
+
+                <button
+                  class="color-btn black"
+                  onclick="changeShirtColor('#111827')"
+                ></button>
+
+                <button
+                  class="color-btn white-bg"
+                  onclick="changeShirtColor('#ffffff')"
+                ></button>
+
+                <button
+                  class="color-btn blue-bg"
+                  onclick="changeShirtColor('#2563eb')"
+                ></button>
+
+                <button
+                  class="color-btn red-bg"
+                  onclick="changeShirtColor('#dc2626')"
+                ></button>
+
+                <button
+                  class="color-btn green-bg"
+                  onclick="changeShirtColor('#16a34a')"
+                ></button>
+
+              </div>
+
+            </div>
+
+
+            <div class="control">
+
+              <label>Write Your Text</label>
+
+              <input
+                class="input"
+                id="designText"
+                placeholder="Example: REHAN BRAND"
+                oninput="updateDesignText()"
+              />
+
+            </div>
+
+
+            <div class="control">
+
+              <label>Text Color</label>
+
+              <input
+                type="color"
+                id="textColor"
+                value="#ffffff"
+                onchange="changeTextColor()"
+                style="width:100%;height:45px;"
+              />
+
+            </div>
+
+
+            <div class="control">
+
+              <label>Price</label>
+
+              <div class="price">
+                ₹799
+              </div>
+
+            </div>
+
+
+            <button
+              class="add-btn"
+              onclick="addCustomTshirt()"
+            >
+              Add Custom T-Shirt to Cart
+            </button>
+
+          </div>
+
+
+          <div class="design-preview">
+
+            <div class="big-shirt" id="bigShirt">
+
+              <div
+                class="shirt-text"
+                id="shirtText"
+              >
+                YOUR DESIGN
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= DASHBOARD ================= -->
+
+      <section id="dashboard" class="section">
+
+        <h2 class="section-title">💰 My Earning Dashboard</h2>
+
+        <div class="earning-box">
+
+          <p>Total Estimated Earning</p>
+
+          <h1>
+            ₹<span id="earning">0</span>
+          </h1>
+
+        </div>
+
+
+        <div class="stats">
+
+          <div class="card">
+            <h3>Total Orders</h3>
+            <p id="orders">0</p>
+          </div>
+
+          <div class="card">
+            <h3>Total Sales</h3>
+            <p>₹<span id="sales">0</span></p>
+          </div>
+
+          <div class="card">
+            <h3>Commission / Profit</h3>
+            <p>₹<span id="profit">0</span></p>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= CART ================= -->
+
+      <section id="cart" class="section">
+
+        <h2 class="section-title">🛒 Your Cart</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="total">
+
+          <h2>
+            Total: ₹<span id="cartTotal">0</span>
+          </h2>
+
+          <button
+            class="pay-btn"
+            onclick="openPayment()"
+          >
+            💳 Proceed to Demo Payment
+          </button>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer>
+      © 2026 <strong>Rehan T-Shirt Studio</strong> — by Rehan
+    </footer>
+
+  </div>
+
+
+  <!-- ================= PAYMENT MODAL ================= -->
+
+  <div class="modal" id="paymentModal">
+
+    <div class="modal-box">
+
+      <h2>💳 Demo Payment</h2>
+
+      <div class="payment-methods">
+
+        <div
+          class="method active"
+          onclick="selectMethod(this)"
+        >
+          UPI
+        </div>
+
+        <div
+          class="method"
+          onclick="selectMethod(this)"
+        >
+          Card
+        </div>
+
+        <div
+          class="method"
+          onclick="selectMethod(this)"
+        >
+          Cash
+        </div>
+
+      </div>
+
+
+      <input
+        class="input"
+        id="paymentName"
+        placeholder="Name on Payment"
+      />
+
+      <input
+        class="input"
+        placeholder="UPI ID / Card Number"
+      />
+
+      <input
+        class="input"
+        type="number"
+        placeholder="Amount"
+        id="paymentAmount"
+        readonly
+      />
+
+      <button
+        class="primary-btn"
+        onclick="makePayment()"
+      >
+        Pay Now — Demo
+      </button>
+
+      <button
+        class="close-btn"
+        onclick="closePayment()"
+      >
+        Cancel
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    /* ================= DATA ================= */
+
+    let cart = [];
+
+    let totalSales = 0;
+    let totalOrders = 0;
+    let totalProfit = 0;
+
+    let selectedShirtColor = "#111827";
+
+
+    /* ================= LOGIN ================= */
+
+    function login() {
+
+      const username =
+        document.getElementById("username").value.trim();
+
+      const email =
+        document.getElementById("email").value.trim();
+
+      const password =
+        document.getElementById("password").value.trim();
+
+      if (!username || !email || !password) {
+
+        alert("Please name, email aur password enter karo.");
+
+        return;
+      }
+
+      localStorage.setItem("rehanUser", username);
+
+      document.getElementById("loginPage").style.display = "none";
+
+      document.getElementById("app").style.display = "block";
+
+      alert("Welcome " + username + " 👋");
+
+    }
+
+
+    /* ================= LOGOUT ================= */
+
+    function logout() {
+
+      localStorage.removeItem("rehanUser");
+
+      location.reload();
+
+    }
+
+
+    /* ================= NAVIGATION ================= */
+
+    function showSection(sectionId) {
+
+      const sections =
+        document.querySelectorAll(".section");
+
+      sections.forEach(section => {
+        section.classList.remove("active");
+      });
+
+      document
+        .getElementById(sectionId)
+        .classList.add("active");
+
+      if (sectionId === "cart") {
+        renderCart();
+      }
+
+      if (sectionId === "dashboard") {
+        updateDashboard();
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* ================= CART ================= */
+
+    function addToCart(name, price) {
+
+      cart.push({
+        name: name,
+        price: price
+      });
+
+      updateCartCount();
+
+      alert(name + " cart me add ho gayi.");
+
+    }
+
+
+    function addCustomTshirt() {
+
+      const text =
+        document.getElementById("designText").value.trim();
+
+      const name =
+        text
+          ? "Custom T-Shirt - " + text
+          : "Custom Designed T-Shirt";
+
+      cart.push({
+        name: name,
+        price: 799
+      });
+
+      updateCartCount();
+
+      alert("Custom T-shirt cart me add ho gayi! 🎨");
+
+    }
+
+
+    function removeFromCart(index) {
+
+      cart.splice(index, 1);
+
+      renderCart();
+
+      updateCartCount();
+
+    }
+
+
+    function updateCartCount() {
+
+      document.getElementById("cartCount").innerText =
+        cart.length;
+
+    }
+
+
+    function renderCart() {
+
+      const cartItems =
+        document.getElementById("cartItems");
+
+      const cartTotal =
+        document.getElementById("cartTotal");
+
+      if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+          <div class="card">
+            <h3>Your cart is empty 🛒</h3>
+            <p>Shop se T-shirt add karo.</p>
+          </div>
+        `;
+
+        cartTotal.innerText = "0";
+
+        return;
+      }
+
+
+      let html = "";
+      let total = 0;
+
+      cart.forEach((item, index) => {
+
+        total += item.price;
+
+        html += `
+          <div class="cart-item">
+
+            <div>
+              <strong>${item.name}</strong>
+              <br>
+              ₹${item.price}
+            </div>
+
+            <button
+              class="remove-btn"
+              onclick="removeFromCart(${index})"
+            >
+              Remove
+            </button>
+
+          </div>
+        `;
+
+      });
+
+
+      cartItems.innerHTML = html;
+
+      cartTotal.innerText = total;
+
+    }
+
+
+    /* ================= DESIGNER ================= */
+
+    function changeShirtColor(color) {
+
+      selectedShirtColor = color;
+
+      document.getElementById("bigShirt")
+        .style.background = color;
+
+      if (color === "#ffffff") {
+
+        document.getElementById("shirtText")
+          .style.color = "#111827";
+
+      } else {
+
+        document.getElementById("shirtText")
+          .style.color = "#ffffff";
+
+      }
+
+    }
+
+
+    function updateDesignText() {
+
+      const text =
+        document.getElementById("designText").value;
+
+      document.getElementById("shirtText").innerText =
+        text || "YOUR DESIGN";
+
+    }
+
+
+    function changeTextColor() {
+
+      const color =
+        document.getElementById("textColor").value;
+
+      document.getElementById("shirtText")
+        .style.color = color;
+
+    }
+
+
+    /* ================= PAYMENT ================= */
+
+    function openPayment() {
+
+      if (cart.length === 0) {
+
+        alert("Pehle cart me T-shirt add karo.");
+
+        return;
+      }
+
+      let total = 0;
+
+      cart.forEach(item => {
+        total += item.price;
+      });
+
+      document.getElementById("paymentAmount")
+        .value = total;
+
+      document.getElementById("paymentModal")
+        .style.display = "flex";
+
+    }
+
+
+    function closePayment() {
+
+      document.getElementById("paymentModal")
+        .style.display = "none";
+
+    }
+
+
+    function selectMethod(element) {
+
+      document
+        .querySelectorAll(".method")
+        .forEach(method => {
+          method.classList.remove("active");
+        });
+
+      element.classList.add("active");
+
+    }
+
+
+    function makePayment() {
+
+      const name =
+        document.getElementById("paymentName")
+          .value.trim();
+
+      if (!name) {
+
+        alert("Payment name enter karo.");
+
+        return;
+      }
+
+
+      let total = 0;
+
+      cart.forEach(item => {
+        total += item.price;
+      });
+
+
+      /*
+        DEMO PAYMENT
+
+        Real money transfer nahi hota.
+        Yahan sirf successful payment ka simulation hai.
+      */
+
+      totalSales += total;
+
+      totalOrders += cart.length;
+
+      /*
+        Example profit:
+        Sales ka 30%
+      */
+
+      totalProfit += Math.round(total * 0.30);
+
+
+      cart = [];
+
+      updateCartCount();
+
+      closePayment();
+
+      renderCart();
+
+      updateDashboard();
+
+      alert(
+        "✅ Demo Payment Successful!\n\n" +
+        "Amount: ₹" + total +
+        "\nOrder successfully placed."
+      );
+
+      showSection("dashboard");
+
+    }
+
+
+    /* ================= DASHBOARD ================= */
+
+    function updateDashboard() {
+
+      document.getElementById("sales")
+        .innerText = totalSales;
+
+      document.getElementById("orders")
+        .innerText = totalOrders;
+
+      document.getElementById("profit")
+        .innerText = totalProfit;
+
+      document.getElementById("earning")
+        .innerText = totalProfit;
+
+    }
+
+
+    /* ================= AUTO LOGIN ================= */
+
+    window.onload = function() {
+
+      const user =
+        localStorage.getItem("rehanUser");
+
+      if (user) {
+
+        document.getElementById("loginPage")
+          .style.display = "none";
+
+        document.getElementById("app")
+          .style.display = "block";
+
+      }
+
+    };
+
+  </script>
+
+</body>
+</html>
